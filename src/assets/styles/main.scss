@@ -1,0 +1,28 @@
+// Setup
+@import "setup/variables";
+@import "setup/functions";
+@import "setup/mixins";
+@import "setup/typography";
+
+// Basics
+@import "basics/helpers";
+@import "basics/layout";
+@import "basics/base";
+@import "basics/links";
+@import "basics/forms";
+
+
+// Views
+@import "views/Home";
+
+
+// Components
+@import "cmps/MainHeader.scss";
+@import "cmps/DiscoverCreate.scss";
+@import "cmps/RecipesList.scss";
+
+
+
+
+
+

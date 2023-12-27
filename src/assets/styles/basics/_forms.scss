@@ -1,0 +1,49 @@
+button {
+    margin: 0;
+    border: 0;
+    border-radius: 10px;
+    background-color: $BGC1;
+    color: $txtClr1;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: workSans;
+
+
+    &.form-btn {
+        background-color: $btnClr;
+    }
+
+    &.underline-btn {
+        border: 2px solid $btnClr;
+        width: 200px;
+    }
+}
+
+form>* {
+    display: block;
+    width: 200px;
+    margin: 10px 0px;
+}
+
+.recipes-card {
+    background-color: $BGC2;
+    border-radius: 20px;
+
+    img {
+        border-radius: 10px 10px 0px 0px;
+    }
+
+    .recipes-details {
+        padding: 20px;
+
+        h4 {
+            font-size: 1.375em;
+        }
+    }
+}
+
+.mini-profile {
+    width: 24px;
+
+}

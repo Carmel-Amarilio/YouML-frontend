@@ -1,0 +1,59 @@
+.discover-create {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr minmax(1fr 2fr);
+    grid-template-areas:
+        'header card'
+        'view card';
+    gap: 20px;
+
+    h1 {
+        font-size: 3.18em;
+        grid-area: header;
+    }
+
+    .view {
+        grid-area: view;
+
+        button {
+            width: 200px;
+        }
+
+        .statistics {
+            h3 {
+                font-family: spaceMono;
+            }
+
+            p {
+                font-weight: lighter;
+            }
+        }
+    }
+
+
+    .recipes-card {
+        grid-area: card;
+    }
+
+    @include for-normal-layout {
+        // grid-template-columns: 20px 1fr 20px;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            'header'
+            'card'
+            'view';
+
+        .view {
+            .btns-container {
+                gap: 10px;
+                button {
+                    width: 145px;
+                }
+            }
+
+
+        }
+    }
+
+}

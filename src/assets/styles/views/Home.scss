@@ -1,0 +1,8 @@
+.home{
+    row-gap: 80px;
+
+    @include for-normal-layout {
+        row-gap: 40px;
+    }
+}
+
