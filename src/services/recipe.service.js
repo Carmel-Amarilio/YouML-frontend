@@ -66,6 +66,7 @@ function addRecipes() {
 
 function addRecipe(name, imgUrl, username, userImgUrl, runs, likes) {
     return {
+        _id: utilService.makeId,
         name,
         imgUrl,
         by: {

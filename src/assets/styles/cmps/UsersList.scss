@@ -1,0 +1,88 @@
+.users-list {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        'header btn'
+        'main main';
+    gap: 30px;
+
+    h2 {
+        grid-area: header;
+        font-size: 2em;
+    }
+
+    .underline-btn {
+        grid-area: btn;
+        justify-self: end;
+        border-radius: 1.2em;
+    }
+
+    .card-grid {
+        grid-area: main;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+
+    .user-card{
+        position: relative;
+        background-color: $BGC2;
+        border-radius: 20px;
+        padding: 20px;
+        gap: 10px;
+        transition: transform 0.3s ease-in-out;
+        cursor: pointer;
+
+        .index{
+            position: absolute;
+            background-color: $BGC1;
+            padding: 5px 10px;
+            border-radius: 50%;
+            color: $txtClr2;
+        }
+
+        img{
+            width: 120px;
+            align-self: center;
+        }
+
+        .name{
+            align-self: center;
+            font-size: 1.375em;
+        }
+
+        .runs{
+            color: $txtClr2;
+
+            span{
+                color: $txtClr1;
+            }
+        }
+
+        &:hover {
+            transform: scale(0.9);
+        }
+
+    }
+
+    @include for-normal-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            'header'
+            'main'
+            'btn'
+        ;
+
+        h2 {
+            font-size: 1.75em;
+        }
+
+        .underline-btn {
+            width: 100%;
+        }
+
+        .card-grid {
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+    }
+
+}

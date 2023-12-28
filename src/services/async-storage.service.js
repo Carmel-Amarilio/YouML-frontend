@@ -24,6 +24,7 @@ function post(entityType, newEntity) {
     newEntity._id = _makeId()
     return query(entityType).then(entities => {
         const newEntities = [...entities, ...newEntity]
+        console.log(newEntities);
         _save(entityType, newEntities)
         return newEntity
     })

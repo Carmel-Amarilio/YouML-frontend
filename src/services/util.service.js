@@ -56,7 +56,7 @@ function debounce(func, timeout = 300) {
 
 function formatNumber(number) {
     if (number >= 1000 && number < 1000000) {
-        return (number / 1000).toFixed(0) + 'k+';
+        return (number / 1000).toFixed(1) + 'k';
     } else {
         return number.toString();
     }

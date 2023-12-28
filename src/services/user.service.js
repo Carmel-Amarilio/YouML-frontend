@@ -1,14 +1,16 @@
 import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
+import { utilService } from './util.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
+const USERS_KEY = 'usersDB'
 
 export const userService = {
     login,
     logout,
     signup,
     getLoggedinUser,
-    saveLocalUser,
+    save,
     getUsers,
     getById,
     remove,
@@ -21,8 +23,8 @@ window.userService = userService
 
 
 function getUsers() {
-    // return storageService.query('user')
-    return httpService.get(`user`)
+    return storageService.query(USERS_KEY)
+    // return httpService.get(`user`)
 }
 
 
@@ -43,7 +45,7 @@ async function update({ _id, score }) {
     // user.score = score
     // await storageService.put('user', user)
 
-    const user = await httpService.put(`user/${_id}`, {_id, score})
+    const user = await httpService.put(`user/${_id}`, { _id, score })
     // Handle case in which admin updates other user's details
     if (getLoggedinUser()._id === user._id) saveLocalUser(user)
     return user
@@ -78,11 +80,13 @@ async function changeScore(by) {
 }
 
 
-function saveLocalUser(user) {
-    user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, score: user.score }
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-    return user
+function save(user) {
+    if (user._id) return storageService.put(USERS_KEY, user)
+    else return storageService.post(USERS_KEY, user)
 }
+
+
+
 
 function updateLocalUserFields(user) {
     const currUser = getLoggedinUser()
@@ -96,11 +100,41 @@ function getLoggedinUser() {
 }
 
 
-// ;(async ()=>{
-//     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
-//     await userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 10000, isAdmin: true})
-//     await userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 10000})
-// })()
 
+try {
+    const users = await getUsers()
+    if (!users.length) _addUsers()
+} catch (error) {
+    console.log(error);
+}
 
+function _addUsers() {
+    const users = [
+        _addUser('Keepitreal', 1300, 'https://res.cloudinary.com/du1jrse2t/image/upload/v1703685194/youML/1b166739-accc-417c-b695-0dfd1432c6b4_zxouqd.png'),
+        _addUser('DigiLab', 1300, 'https://res.cloudinary.com/du1jrse2t/image/upload/v1703685204/youML/f9d2c07e-8580-4334-bc06-e2a505df89a9_k88zbs.png'),
+        _addUser('GravityOne', 1300, 'https://res.cloudinary.com/du1jrse2t/image/upload/v1703685211/youML/5c5b3d43-b814-4874-9111-2b813c34ee3b_h6qsyg.png'),
+        _addUser('Juanie', 1300, 'https://res.cloudinary.com/du1jrse2t/image/upload/v1703750712/youML/efadab25-afe6-43d4-b36b-97889714b811_zgvlwb.png'),
+        _addUser('BlueWhale', 1300, 'https://res.cloudinary.com/du1jrse2t/image/upload/v1703750715/youML/f59bbf1d-bc75-4d89-8308-a6f07f2a0c71_x5u5ud.png'),
+        _addUser('Mr fox', 1300, 'https://res.cloudinary.com/du1jrse2t/image/upload/v1703750718/youML/6396859e-09bf-46ea-b335-bf4aa3d1638d_yo3v5v.png'),
+        _addUser('Shroomie', 1300, 'https://res.cloudinary.com/du1jrse2t/image/upload/v1703750721/youML/a96ebe81-d7f2-4874-8d86-256575bd06a6_zxzgms.png'),
+        _addUser('Robotica', 1300, 'https://res.cloudinary.com/du1jrse2t/image/upload/v1703750725/youML/777e07e2-367d-44ee-a7e1-c3fc46cedbab_bz8tg2.png'),
+        _addUser('RustyRobot', 1300, 'https://res.cloudinary.com/du1jrse2t/image/upload/v1703750735/youML/3a17c5ee-cf6e-4dff-b2fb-add943c17bfa_qcbnve.png'),
+        _addUser('Animakid', 1300, 'https://res.cloudinary.com/du1jrse2t/image/upload/v1703690065/youML/cba5e98b-2db0-4385-ab4f-3bb2d72aaa07_hnja1y.png'),
+        _addUser('Dotgu', 1300, 'https://res.cloudinary.com/du1jrse2t/image/upload/v1703750741/youML/be6772cb-fa1f-4d9c-a0f7-279829d98bad_wrkjdx.png'),
+        _addUser('Ghiblier', 1300, 'https://res.cloudinary.com/du1jrse2t/image/upload/v1703750745/youML/cadf4157-b8e5-4b92-ba62-502fd8ab6396_neha6a.png'),
+
+    ]
+    save(users)
+}
+
+function _addUser(name, runs, imgUrl) {
+    return {
+        _id: utilService.makeId,
+        name,
+        imgUrl,
+        runs,
+
+    }
+
+}
 

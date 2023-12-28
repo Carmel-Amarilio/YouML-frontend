@@ -23,6 +23,12 @@
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
 
+    .recipes-card{
+        .name{
+            font-size: 0.75em;
+        }
+    }
+
     @include for-normal-layout {
         // grid-template-rows: 1fr;
         grid-template-columns: 1fr;

@@ -8,6 +8,7 @@ button {
     cursor: pointer;
     font-size: 16px;
     font-family: workSans;
+    transition: transform 0.3s ease-in-out;
 
 
     &.form-btn {
@@ -17,6 +18,10 @@ button {
     &.underline-btn {
         border: 2px solid $btnClr;
         width: 200px;
+    }
+
+    &:hover {
+        transform: scale(0.9);
     }
 }
 
@@ -29,6 +34,8 @@ form>* {
 .recipes-card {
     background-color: $BGC2;
     border-radius: 20px;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
 
     img {
         border-radius: 10px 10px 0px 0px;
@@ -41,9 +48,17 @@ form>* {
             font-size: 1.375em;
         }
     }
+
+    &:hover {
+        transform: scale(0.9);
+    }
 }
 
 .mini-profile {
     width: 24px;
 
+}
+
+.num{
+    font-family: spaceMono;
 }

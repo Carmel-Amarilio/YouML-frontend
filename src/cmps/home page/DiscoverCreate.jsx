@@ -1,7 +1,7 @@
 import { utilService } from "../../services/util.service"
 
 export function DiscoverCreate({ recipes }) {
-    const statistics = [{ title: "Total Runs", total: 240000 }, { title: "Workflows", total: 100000 }, { title: "Creators", total: 240000 }]
+    const statistics = [{ title: "Total Runs", total: 240200 }, { title: "Workflows", total: 100500 }, { title: "Creators", total: 240600 }]
     const { name, imgUrl, by } = recipes[3];
 
     return (
@@ -17,7 +17,7 @@ export function DiscoverCreate({ recipes }) {
                 <div className="flex gap30">
                     {statistics.map(({ title, total }) =>
                         <div className="statistics flex column gap5" key={title}>
-                            <h3>{utilService.formatNumber(total)}</h3>
+                            <h3>{utilService.formatNumber(total)}+</h3>
                             <p>{title}</p>
                         </div>
                     )}
