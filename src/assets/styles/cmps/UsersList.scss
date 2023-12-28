@@ -23,7 +23,7 @@
         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     }
 
-    .user-card{
+    .user-card {
         position: relative;
         background-color: $BGC2;
         border-radius: 20px;
@@ -32,28 +32,32 @@
         transition: transform 0.3s ease-in-out;
         cursor: pointer;
 
-        .index{
+        .index {
             position: absolute;
             background-color: $BGC1;
-            padding: 5px 10px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             color: $txtClr2;
-        }
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
 
-        img{
+        img {
             width: 120px;
             align-self: center;
         }
 
-        .name{
+        .name {
             align-self: center;
             font-size: 1.375em;
         }
 
-        .runs{
+        .runs {
             color: $txtClr2;
 
-            span{
+            span {
                 color: $txtClr1;
             }
         }
