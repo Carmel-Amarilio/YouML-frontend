@@ -8,6 +8,7 @@ import { DiscoverCreate } from "../cmps/home page/DiscoverCreate";
 import { RecipesList } from "../cmps/home page/RecipesList";
 import { UsersList } from "../cmps/home page/UsersList";
 import { loadUsers } from "../store/actions/user.actions";
+import { ContestCard } from "../cmps/home page/ContestCard";
 
 export function Home() {
     const recipes = useSelector((storeState) => storeState.recipeModule.recipes)
@@ -29,6 +30,7 @@ export function Home() {
             <RecipesList title={'Trending Recipes'} recipes={recipes} />
             <RecipesList title={'Newest Recipes'} recipes={recipes} />
             <UsersList users={users} />
+            <ContestCard  />
         </section>
     )
 }

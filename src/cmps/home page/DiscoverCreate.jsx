@@ -1,5 +1,8 @@
 import { utilService } from "../../services/util.service"
 
+import rocketIcon from "../../assets/img/icons/RocketLaunch.svg"
+import plusIcon from "../../assets/img/icons/Plus.svg"
+
 export function DiscoverCreate({ recipes }) {
     const statistics = [{ title: "Total Runs", total: 240200 }, { title: "Workflows", total: 100500 }, { title: "Creators", total: 240600 }]
     const { name, imgUrl, by } = recipes[3];
@@ -10,8 +13,8 @@ export function DiscoverCreate({ recipes }) {
 
             <article className="view flex column gap10">
                 <div className="btns-container flex gap20">
-                    <button className="form-btn"><i className="fa-solid fa-rocket"></i> Discover</button>
-                    <button className="underline-btn">+ Create</button>
+                    <button className="form-btn icon-box"> <img src={rocketIcon}/> Discover</button>
+                    <button className="underline-btn icon-box"><img src={plusIcon} /> Create</button>
                 </div>
 
                 <div className="flex gap30">

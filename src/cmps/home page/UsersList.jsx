@@ -1,12 +1,14 @@
 import { utilService } from "../../services/util.service";
 
+import rocketIcon from "../../assets/img/icons/RocketLaunch.svg"
+
 export function UsersList({ users }) {
     console.log(users);
     return (
         <section className="users-list">
             <h2>Top creators</h2>
 
-            <button className="underline-btn">View Rankings</button>
+            <button className="underline-btn icon-box"> <img src={rocketIcon}/>View Rankings</button>
 
             <main className="card-grid">
                 {users.slice(0, 12).map(({ _id, imgUrl, name, runs }, i) => (

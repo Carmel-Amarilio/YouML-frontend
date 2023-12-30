@@ -26,6 +26,10 @@
     .recipes-card{
         .name{
             font-size: 0.75em;
+            gap: 0px;
+            img{
+                width: 14px !important;
+            }
         }
     }
 

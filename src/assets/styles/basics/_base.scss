@@ -50,3 +50,13 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+.icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    img {
+        width: 20px !important;
+    }
+}
