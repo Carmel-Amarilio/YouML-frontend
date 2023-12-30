@@ -1,0 +1,61 @@
+.contest-card {
+    background-image: url('../../../../src/assets/img/contestImg.png');
+    height: 640px;
+    background-size: cover;
+    display: grid;
+    grid-template-rows: 380px 1fr 1fr 1fr 60px;
+    grid-template-columns: 80px 1fr 1fr 80px;
+    grid-template-areas:
+        'marg1 marg1 marg1 marg1'
+        'marg2 user clock marg3'
+        'marg2 header clock marg5'
+        'marg2 btn clock marg5'
+        'marg4 marg4 marg4 marg4';
+
+    .user {
+        grid-area: user;
+        background-color: $BGC2;
+        padding: 10px 20px;
+        border-radius: 20px;
+        width: max-content;
+        height: max-content;
+        margin-block-end: 30px;
+    }
+
+    h1 {
+        grid-area: header;
+        font-size: 3.18em;
+        height: max-content;
+        margin-block-end: 30px;
+    }
+
+    .form-btn {
+        grid-area: btn;
+        background-color: white;
+        color: $txtClr3;
+        width: max-content;
+        width: 221px;
+        height: max-content;
+    }
+
+    .clock {
+        grid-area: clock;
+        background-color: rgba(43, 43, 43, 0.5);
+        padding: 30px;
+        border-radius: 20px;
+        width: max-content;
+        height: max-content;
+        align-self: self-end;
+        justify-self: self-end;
+
+        .text {
+            font-size: 0.75em;
+        }
+
+        .time {
+            font-size: 2.375em;
+            font-weight: 700;
+        }
+    }
+
+}

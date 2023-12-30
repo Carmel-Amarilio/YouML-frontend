@@ -22,7 +22,7 @@ export function Home() {
             })
     }, []);
 
-    if (!recipes.length) return ('loading...')
+    if (!recipes.length || !users.length) return ('loading...')
     return (
         <section className="home main-container">
             <MainHeader />
@@ -30,7 +30,7 @@ export function Home() {
             <RecipesList title={'Trending Recipes'} recipes={recipes} />
             <RecipesList title={'Newest Recipes'} recipes={recipes} />
             <UsersList users={users} />
-            <ContestCard  />
+            <ContestCard user={users[6]} />
         </section>
     )
 }
