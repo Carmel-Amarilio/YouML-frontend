@@ -1,0 +1,87 @@
+.main-footer {
+    padding-block: 40px;
+    background-color: $BGC2;
+
+    p {
+        color: $txtClr4;
+        margin-block-start: 20px;
+        font-size: 0.75em;
+    }
+
+
+    section {
+        border-bottom: 1px solid $txtClr4;
+        padding: 0px 30px 30px 30px;
+
+        h1 {
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            color: $txtClr4;
+            margin-bottom: 20px;
+            max-width: 330px;
+        }
+
+        .logo {
+            margin-bottom: 25px;
+
+            img {
+                width: 24px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+        }
+
+        .enter-email {
+            position: relative;
+
+            input {
+                width: 100%;
+            }
+
+            .form-btn {
+                position: absolute;
+                right: 0;
+                width: 150px;
+            }
+        }
+    }
+
+    @include for-normal-layout {
+        section {
+            flex-direction: column;
+            gap: 30px;
+
+            p {
+                max-width: max-content;
+            }
+
+            .enter-email {
+                max-width: 420px;
+            }
+        }
+    }
+
+    @include for-narrow-layout {
+        section {
+            .enter-email {
+                flex-direction: column;
+                gap: 15px;
+
+                input {
+                    width: 100%;
+                }
+
+                .form-btn {
+                    position: relative;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

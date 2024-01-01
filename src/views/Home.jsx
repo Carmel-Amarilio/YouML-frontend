@@ -10,6 +10,7 @@ import { UsersList } from "../cmps/home page/UsersList";
 import { loadUsers } from "../store/actions/user.actions";
 import { ContestCard } from "../cmps/home page/ContestCard";
 import { JoinCard } from "../cmps/home page/JoinCard";
+import { MainFooter } from "../cmps/MainFooter";
 
 export function Home() {
     const recipes = useSelector((storeState) => storeState.recipeModule.recipes)
@@ -33,6 +34,7 @@ export function Home() {
             <UsersList users={users} />
             <ContestCard user={users[6]} />
             <JoinCard />
+            <MainFooter />
         </section>
     )
 }
