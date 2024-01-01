@@ -3,8 +3,10 @@ import { Route, HashRouter as Router, Routes } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import './assets/styles/main.scss'
 
-import { Home } from './views/Home'
 import { store } from './store/store'
+
+import { Home } from './views/Home'
+import { CreateAccount } from './views/CreateAccount'
 
 export function App() {
   return (
@@ -13,6 +15,7 @@ export function App() {
         <main>
           <Routes>
             <Route element={<Home />} path="/" />
+            <Route element={<CreateAccount />} path="/create-account" />
           </Routes>
         </main>
       </Router >
