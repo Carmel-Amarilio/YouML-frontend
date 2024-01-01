@@ -1,0 +1,139 @@
+.top-creators {
+    main {
+        h1 {
+            font-size: 3.1875em;
+            margin-block: 80px;
+        }
+
+        .today::after {
+            content: 'Today';
+        }
+
+        .week::after {
+            content: 'This Week';
+        }
+
+        .month::after {
+            content: 'This Month';
+        }
+
+        header {
+            margin-bottom: 40px;
+
+            button {
+                width: 90%;
+                border-radius: 0;
+
+                &.select {
+                    border-bottom: 1px solid white;
+                }
+            }
+        }
+
+        table {
+            width: 100%;
+            border-spacing: 0 20px;
+
+            tr {
+                background-color: $BGC2;
+                border-radius: 10px;
+
+                &:first-child {
+                    background-color: $BGC1;
+                }
+            }
+
+            th {
+                text-align: left;
+                color: $txtClr2;
+                border-top: 2px solid $BGC2;
+                border-bottom: 2px solid $BGC2;
+            }
+
+            td,
+            th {
+                padding: 12px;
+
+                &:first-child {
+                    border-top-left-radius: 20px;
+                    border-bottom-left-radius: 20px;
+                    border-left: 2px solid $BGC2;
+                }
+
+                &:last-child {
+                    border-top-right-radius: 20px;
+                    border-bottom-right-radius: 20px;
+                    border-right: 2px solid $BGC2;
+                }
+            }
+
+            .index {
+                div {
+                    background-color: $BGC1;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    color: $txtClr2;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+
+            img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .change {
+                p {
+
+                    color: rgb(7, 158, 77);
+                }
+            }
+        }
+
+        @include for-normal-layout {
+            h1 {
+                font-size: 3.166em;
+                margin-block: 40px;
+            }
+
+            table {
+                .runs {
+                    display: none;
+                }
+            }
+        }
+
+        @include for-narrow-layout {
+            h1 {
+                font-size: 1.75em;
+                margin-block: 30px;
+            }
+
+            .today::after {
+                content: '1d' !important;
+            }
+
+            .week::after {
+                content: '7d';
+            }
+
+            .month::after {
+                content: '30d';
+            }
+
+            th {
+                font-size: 0.75em;
+            }
+
+            table {
+                .change {
+                    display: none;
+                }
+            }
+        }
+    }
+
+}

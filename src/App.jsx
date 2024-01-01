@@ -7,6 +7,7 @@ import { store } from './store/store'
 
 import { Home } from './views/Home'
 import { CreateAccount } from './views/CreateAccount'
+import { TopCreators } from './views/TopCreators'
 
 export function App() {
   return (
@@ -16,6 +17,7 @@ export function App() {
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<CreateAccount />} path="/create-account" />
+            <Route element={<TopCreators />} path="/top-creators" />
           </Routes>
         </main>
       </Router >
