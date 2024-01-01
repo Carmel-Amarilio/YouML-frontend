@@ -9,6 +9,7 @@ import { RecipesList } from "../cmps/home page/RecipesList";
 import { UsersList } from "../cmps/home page/UsersList";
 import { loadUsers } from "../store/actions/user.actions";
 import { ContestCard } from "../cmps/home page/ContestCard";
+import { JoinCard } from "../cmps/home page/JoinCard";
 
 export function Home() {
     const recipes = useSelector((storeState) => storeState.recipeModule.recipes)
@@ -31,6 +32,7 @@ export function Home() {
             <RecipesList title={'Newest Recipes'} recipes={recipes} />
             <UsersList users={users} />
             <ContestCard user={users[6]} />
+            <JoinCard />
         </section>
     )
 }

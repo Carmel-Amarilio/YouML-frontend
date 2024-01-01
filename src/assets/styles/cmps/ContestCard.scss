@@ -4,7 +4,7 @@
     background-size: cover;
     display: grid;
     grid-template-rows: 380px 1fr 1fr 1fr 60px;
-    grid-template-columns: 80px 1fr 1fr 80px;
+    grid-template-columns: $mainMargin 1fr 1fr $mainMargin;
     grid-template-areas:
         'marg1 marg1 marg1 marg1'
         'marg2 user clock marg3'
@@ -58,4 +58,89 @@
         }
     }
 
+    @include for-normal-layout {
+        grid-template-rows: 380px 1fr 1fr 1fr 60px;
+        grid-template-columns: $mainMargin 1fr 1fr $mainMargin;
+        grid-template-areas:
+            'marg1 marg1 marg1 marg1'
+            'marg2 user clock marg3'
+            'marg2 header clock marg5'
+            'marg2 btn clock marg5'
+            'marg4 marg4 marg4 marg4';
+
+        .user {
+            grid-area: user;
+        }
+
+        h1 {
+            grid-area: header;
+            font-size: 2.375em;
+            margin: 0;
+
+        }
+
+        .form-btn {
+            grid-area: btn;
+
+        }
+
+        .clock {
+            grid-area: clock;
+
+            .text {
+                font-size: 0.75em;
+            }
+
+            .time {
+                font-size: 2.375em;
+                font-weight: 700;
+            }
+        }
+    }
+
+    @include for-narrow-layout {
+        grid-template-rows: 120px 1fr 1fr 1fr 1fr 60px;
+        grid-template-columns: $mainMarginNarrow 1fr $mainMarginNarrow;
+        grid-template-areas:
+            'marg1 marg1 marg1'
+            'marg2 user marg3'
+            'marg2 header marg3'
+            'marg2 clock marg3'
+            'marg2 btn marg3'
+            'marg4 marg4 marg4';
+        row-gap: 30px;
+
+        .user {
+            grid-area: user;
+        }
+
+        h1 {
+            grid-area: header;
+            font-size: 2.375em;
+
+        }
+
+        .form-btn {
+            grid-area: btn;
+            width: 100%;
+
+        }
+
+        .clock {
+            grid-area: clock;
+            // width: 100%;
+            align-self: center;
+            justify-self: center;
+    
+
+            .text {
+                font-size: 0.75em;
+            }
+
+            .time {
+                font-size: 2.375em;
+                font-weight: 700;
+            }
+        }
+    }
 }

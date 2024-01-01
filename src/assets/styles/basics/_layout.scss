@@ -1,6 +1,6 @@
 .main-container {
     display: grid;
-    grid-template-columns: 80px 1fr 80px;
+    grid-template-columns: $mainMargin 1fr $mainMargin;
 
     > * {
         grid-column: 2;
@@ -11,8 +11,7 @@
     }
 
     @include for-normal-layout {
-        grid-template-columns: 20px 1fr 20px;
-
+        grid-template-columns: $mainMarginNarrow 1fr $mainMarginNarrow;
     }
 }
 
