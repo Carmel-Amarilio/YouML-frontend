@@ -1,23 +1,4 @@
 .recipes-list {
-    display: grid;
-    grid-template-rows: auto auto;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-        'header btn'
-        'main main';
-    gap: 30px;
-
-    h2 {
-        grid-area: header;
-        font-size: 2em;
-    }
-
-    .underline-btn {
-        grid-area: btn;
-        justify-self: end;
-        border-radius: 1.2em;
-    }
-
     .card-grid {
         grid-area: main;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -34,7 +15,6 @@
     }
 
     @include for-normal-layout {
-        // grid-template-rows: 1fr;
         grid-template-columns: 1fr;
         grid-template-areas:
             'header'

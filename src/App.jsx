@@ -8,6 +8,7 @@ import { store } from './store/store'
 import { Home } from './views/Home'
 import { CreateAccount } from './views/CreateAccount'
 import { TopCreators } from './views/TopCreators'
+import { BrowseMarketplace } from './views/BrowseMarketplace'
 
 export function App() {
   return (
@@ -18,6 +19,7 @@ export function App() {
             <Route element={<Home />} path="/" />
             <Route element={<CreateAccount />} path="/create-account" />
             <Route element={<TopCreators />} path="/top-creators" />
+            <Route element={<BrowseMarketplace />} path="/marketplace" />
           </Routes>
         </main>
       </Router >

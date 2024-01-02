@@ -23,7 +23,7 @@ export function MainFooter() {
                         <h2>YouML</h2>
                     </div>
                     <p>Join our community</p>
-                    <div className='flex gap10'>
+                    <div className='icons flex gap10'>
                         <img src={DiscordLogoIcon} />
                         <img src={YoutubeLogoIcon} />
                         <img src={TwitterLogoIcon} />

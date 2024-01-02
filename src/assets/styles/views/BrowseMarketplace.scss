@@ -1,0 +1,68 @@
+.browse-marketplace {
+    margin-top: 100px;
+
+    h1 {
+        font-size: 3.1875em;
+        margin-block: 80px 30px;
+    }
+
+    .search {
+        position: relative;
+        margin-block-end: 80px;
+
+        input {
+            width: 100%;
+            background-color: $BGC1;
+            border: 1px solid $BGC2;
+        }
+
+        button {
+            position: absolute;
+            right: 10px;
+        }
+    }
+
+    .btns {
+        width: 100%;
+
+        button {
+            width: 50%;
+            color: $txtClr2;
+            border-radius: 0;
+
+            &.select {
+                color: $txtClr1;
+                border-bottom: 2px solid white;
+            }
+        }
+    }
+
+    .list {
+        padding-block: 60px;
+        background-color: $BGC2;
+        margin-bottom: 5px;
+    }
+
+    @include for-normal-layout {
+        h1 {
+            font-size: 3.166em;
+            margin-block: 60px 30px;
+        }
+
+        .search {
+            margin-block-end: 60px;
+        }
+    }
+
+    @include for-narrow-layout {
+
+        h1 {
+            font-size: 1.75em;
+            margin-block: 40px 30px;
+        }
+
+        .search {
+            margin-block-end: 40px;
+        }
+    }
+}

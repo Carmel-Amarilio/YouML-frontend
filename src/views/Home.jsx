@@ -12,6 +12,11 @@ import { ContestCard } from "../cmps/home page/ContestCard";
 import { JoinCard } from "../cmps/home page/JoinCard";
 import { MainFooter } from "../cmps/MainFooter";
 
+import arrowIcon from "../assets/img/icons/ArrowRight.svg"
+import rocketIcon from "../assets/img/icons/RocketLaunch.svg"
+
+
+
 export function Home() {
     const recipes = useSelector((storeState) => storeState.recipeModule.recipes)
     const users = useSelector((storeState) => storeState.userModule.users)
@@ -29,9 +34,25 @@ export function Home() {
         <section className="home main-container">
             <MainHeader />
             <DiscoverCreate recipes={recipes} />
-            <RecipesList title={'Trending Recipes'} recipes={recipes} />
-            <RecipesList title={'Newest Recipes'} recipes={recipes} />
-            <UsersList users={users} />
+
+            <section className="list">
+                <h2>Trending Recipes</h2>
+                <button className="underline-btn icon-box"> <img src={arrowIcon} /> View All</button>
+                <RecipesList recipes={recipes.slice(0, 3)} />
+            </section>
+
+            <section className="list">
+                <h2>Newest Recipes</h2>
+                <button className="underline-btn icon-box"> <img src={arrowIcon} /> View All</button>
+                <RecipesList recipes={recipes.slice(0, 3)} />
+            </section>
+
+            <section className="list">
+                <h2>Top creators</h2>
+                <button className="underline-btn icon-box"> <img src={rocketIcon} />View Rankings</button>
+                <UsersList users={users.slice(0, 12)} />
+            </section>
+
             <ContestCard user={users[6]} />
             <JoinCard />
             <MainFooter />

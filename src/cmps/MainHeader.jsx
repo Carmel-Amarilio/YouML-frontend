@@ -16,7 +16,7 @@ export function MainHeader() {
     const Nav = () => {
         return (
             <>
-                <button>Marketplace</button>
+                <button onClick={() => navigate("/marketplace")}>Marketplace</button>
                 <button onClick={() => navigate("/top-creators")}>Rankings</button>
                 <button>Create</button>
                 <button onClick={() => navigate("/create-account")} className='form-btn icon-box'>
