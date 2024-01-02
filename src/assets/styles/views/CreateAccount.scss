@@ -4,8 +4,10 @@
         grid-template-columns: 1fr 1fr;
         gap: 60px;
         align-items: center;
+        margin-top: 100px;
 
         section {
+            padding-inline: 20px;
             h1 {
                 font-size: 3.1875em;
             }

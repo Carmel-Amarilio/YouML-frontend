@@ -1,8 +1,17 @@
 .main-header {
     padding: 20px;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    background-color: $BGC1;
+    top: 0;
 
-    img {
-        width: 32px;
+    .logo {
+        cursor: pointer;
+
+        img {
+            width: 32px;
+        }
     }
 
     .bar-btn {
