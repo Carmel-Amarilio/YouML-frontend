@@ -6,11 +6,11 @@
     grid-template-areas:
         'header card'
         'view card';
-    gap: 20px;
+    gap: 30px;
 
     h1 {
-        font-size: 3.18em;
         grid-area: header;
+        font-size: 3.18em;
     }
 
     .view {
@@ -20,13 +20,18 @@
             width: 200px;
         }
 
-        .statistics {
-            h3 {
-                font-family: spaceMono;
-            }
 
-            p {
-                font-weight: lighter;
+        .statistics-container {
+            gap: 150px;
+
+            .statistics {
+                h3 {
+                    font-family: spaceMono;
+                }
+
+                p {
+                    font-weight: lighter;
+                }
             }
         }
     }
@@ -47,11 +52,15 @@
         .view {
             .btns-container {
                 gap: 10px;
+
                 button {
                     width: 145px;
                 }
             }
 
+            .statistics-container {
+                gap: 40px;
+            }
 
         }
     }

@@ -96,6 +96,8 @@ export function CreatorPage() {
                     </article>
                 </section>
 
+                <div className="line full"></div>
+
                 <article className="btns flex space-between">
                     <button className={`${filter === 'created' ? 'select' : ''} created`} onClick={() => setFilter('created')}>Created</button>
                     <button className={`${filter === 'owned' ? 'select' : ''} owned`} onClick={() => setFilter('owned')} >Owned</button>

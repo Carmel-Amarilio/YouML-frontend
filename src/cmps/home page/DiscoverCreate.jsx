@@ -11,13 +11,13 @@ export function DiscoverCreate({ recipes }) {
         <section className="discover-create">
             <h1>Discover & Create AI Recipes</h1>
 
-            <article className="view flex column gap10">
+            <article className="view flex column gap30">
                 <div className="btns-container flex gap20">
                     <button className="form-btn icon-box"> <img src={rocketIcon}/> Discover</button>
-                    <button className="underline-btn icon-box"><img src={plusIcon} /> Create</button>
+                    <button className="underline-btn icon-box"><img src={plusIcon} /> Create</button> 
                 </div>
 
-                <div className="flex gap30">
+                <div className="statistics-container flex ">
                     {statistics.map(({ title, total }) =>
                         <div className="statistics flex column gap5" key={title}>
                             <h3>{utilService.formatNumber(total)}+</h3>

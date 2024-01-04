@@ -2,6 +2,7 @@ import { utilService } from "../../services/util.service";
 
 import likeIcon from "../../assets/img/icons/Like.svg"
 import dotIcon from "../../assets/img/icons/Dot.svg"
+import HeartIcon from "../../assets/img/icons/Heart.svg"
 
 export function RecipesList({ recipes }) {
     return (
@@ -19,8 +20,8 @@ export function RecipesList({ recipes }) {
                                 <span className="num">{utilService.formatNumber(runs)} uses</span>
                                 <img src={dotIcon} />
                                 <img src={likeIcon} />
-                                <span className="num">{likes}%
-                                </span>
+                                <span className="num">{likes}%</span>
+                                <button className="like"><img src={HeartIcon} /></button>
                             </p>
                         </div>
                     </div>

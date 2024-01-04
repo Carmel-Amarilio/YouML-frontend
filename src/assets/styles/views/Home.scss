@@ -28,6 +28,10 @@
         }
     }
 
+    .recipes-card {
+        background-color: $BGC2;
+    }
+
     @include for-normal-layout {
         row-gap: 40px;
 

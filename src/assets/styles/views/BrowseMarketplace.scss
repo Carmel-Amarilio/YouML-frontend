@@ -2,7 +2,6 @@
     margin-top: 100px;
 
     h1 {
-        font-size: 3.1875em;
         margin-block: 80px 30px;
     }
 
@@ -45,7 +44,6 @@
 
     @include for-normal-layout {
         h1 {
-            font-size: 3.166em;
             margin-block: 60px 30px;
         }
 
@@ -57,7 +55,6 @@
     @include for-narrow-layout {
 
         h1 {
-            font-size: 1.75em;
             margin-block: 40px 30px;
         }
 
