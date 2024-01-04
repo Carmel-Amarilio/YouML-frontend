@@ -9,6 +9,7 @@ import { Home } from './views/Home'
 import { CreateAccount } from './views/CreateAccount'
 import { TopCreators } from './views/TopCreators'
 import { BrowseMarketplace } from './views/BrowseMarketplace'
+import { CreatorPage } from './views/CreatorPage'
 
 export function App() {
   return (
@@ -20,6 +21,7 @@ export function App() {
             <Route element={<CreateAccount />} path="/create-account" />
             <Route element={<TopCreators />} path="/top-creators" />
             <Route element={<BrowseMarketplace />} path="/marketplace" />
+            <Route element={<CreatorPage />} path="/creator/:creatorId" />
           </Routes>
         </main>
       </Router >

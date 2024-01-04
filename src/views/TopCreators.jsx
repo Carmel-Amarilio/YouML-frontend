@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { utilService } from "../services/util.service";
 import { loadUsers } from "../store/actions/user.actions";
@@ -8,6 +9,7 @@ import { MainHeader } from "../cmps/MainHeader";
 import { MainFooter } from "../cmps/MainFooter";
 
 export function TopCreators() {
+    const navigate = useNavigate()
     const users = useSelector((storeState) => storeState.userModule.users)
     const [filter, setFilter] = useState('today')
 
@@ -40,8 +42,7 @@ export function TopCreators() {
                             <th className="credits">Total Credits</th>
                         </tr>
                         {users.map(({ _id, imgUrl, name, runs }, i) =>
-                            <tr key={_id} >
-
+                            <tr key={_id} onClick={() => navigate(`/creator/${_id}`)}>
                                 <td className="index">
                                     <div className="num">
                                         {i + 1}

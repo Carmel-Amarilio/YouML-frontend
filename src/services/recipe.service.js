@@ -15,9 +15,16 @@ export const recipeService = {
     getEmptyRecipe,
 }
 
-function query(filterBy = {}) {
+async function query(filterBy = {}) {
+    const { byId } = filterBy
     // return httpService.get(BASE_URL, filterBy)
-    return storageService.query(RECIPE_KEY)
+    try {
+        let recipes = await storageService.query(RECIPE_KEY)
+        // if (byId) recipes = recipes.filter(({ by }) => by._id === byId)
+        return recipes
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 function get(id) {
@@ -66,11 +73,11 @@ function addRecipes() {
 
 function addRecipe(name, imgUrl, username, userImgUrl, runs, likes) {
     return {
-        _id: utilService.makeId,
+        _id: utilService.makeId(),
         name,
         imgUrl,
         by: {
-            _id: utilService.makeId,
+            _id: utilService.makeId(),
             name: username,
             imgUrl: userImgUrl,
         },

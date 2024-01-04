@@ -1,6 +1,7 @@
 .top-creators {
     main {
         margin-top: 100px;
+
         h1 {
             font-size: 3.1875em;
             margin-block: 80px;
@@ -38,9 +39,19 @@
             tr {
                 background-color: $BGC2;
                 border-radius: 10px;
+                transition: transform 0.3s ease-in-out;
+                cursor: pointer;
+
+                &:hover{
+                    transform: scale(0.9);
+                }
 
                 &:first-child {
                     background-color: $BGC1;
+                    cursor: auto;
+                    &:hover{
+                        transform: scale(1);
+                    }
                 }
             }
 
