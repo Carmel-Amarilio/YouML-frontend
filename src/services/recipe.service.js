@@ -3,7 +3,7 @@ import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
 import { utilService } from './util.service'
 
-// const BASE_URL = 'stay/'
+const BASE_URL = 'recipes/'
 const RECIPE_KEY = 'recipesMB'
 
 
@@ -16,20 +16,20 @@ export const recipeService = {
 }
 
 async function query(filterBy = {}) {
-    const { byId } = filterBy
-    // return httpService.get(BASE_URL, filterBy)
-    try {
-        let recipes = await storageService.query(RECIPE_KEY)
-        // if (byId) recipes = recipes.filter(({ by }) => by._id === byId)
-        return recipes
-    } catch (error) {
-        console.log(error);
-    }
+    return httpService.get(BASE_URL, filterBy)
+    // const { byId } = filterBy
+    // try {
+    //     let recipes = await storageService.query(RECIPE_KEY)
+    //     // if (byId) recipes = recipes.filter(({ by }) => by._id === byId)
+    //     return recipes
+    // } catch (error) {
+    //     console.log(error);
+    // }
 }
 
 function get(id) {
-    // return httpService.get(BASE_URL + id)
-    return storageService.get(RECIPE_KEY, id)
+    return httpService.get(BASE_URL + id)
+    // return storageService.get(RECIPE_KEY, id)
 }
 
 function save(recipe) {
@@ -40,8 +40,8 @@ function save(recipe) {
 }
 
 function remove(recipeId) {
-    // return httpService.delete(BASE_URL + stayId)
-    return storageService.remove(RECIPE_KEY, recipeId)
+    return httpService.delete(BASE_URL + stayId)
+    // return storageService.remove(RECIPE_KEY, recipeId)
 }
 
 
@@ -53,12 +53,12 @@ function getEmptyRecipe() {
 
 
 
-try {
-    const val = await storageService.query(RECIPE_KEY)
-    if (!val.length) addRecipes()
-} catch (error) {
-    console.log(error);
-}
+// try {
+//     const val = await storageService.query(RECIPE_KEY)
+//     if (!val.length) addRecipes()
+// } catch (error) {
+//     console.log(error);
+// }
 
 function addRecipes() {
     const recipes = [

@@ -12,7 +12,7 @@
 }
 
 @mixin for-wide-layout {
-  @media (max-width: $break-wide) {
+  @media (min-width: $break-wide) {
     @content;
   }
 }

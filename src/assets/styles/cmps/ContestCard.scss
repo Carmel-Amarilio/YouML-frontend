@@ -1,5 +1,5 @@
 .contest-card {
-    background-image: url('../../../../src/assets/img/contestImg.png');
+    // background-image: url('../../../../src/assets/img/contestImg.png');
     height: 640px;
     background-size: cover;
     display: grid;
@@ -123,5 +123,9 @@
                 font-weight: 700;
             }
         }
+    }
+
+    @include for-wide-layout {
+        grid-template-columns: 1fr 525px 525px 1fr;
     }
 }

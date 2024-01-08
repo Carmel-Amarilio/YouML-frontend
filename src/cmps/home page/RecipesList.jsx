@@ -21,8 +21,10 @@ export function RecipesList({ recipes }) {
                                 <img src={dotIcon} />
                                 <img src={likeIcon} />
                                 <span className="num">{likes}%</span>
-                                <button className="like"><img src={HeartIcon} /></button>
                             </p>
+                            <button className="like icon-box">
+                                <img src={HeartIcon} />
+                            </button>
                         </div>
                     </div>
                 </article>

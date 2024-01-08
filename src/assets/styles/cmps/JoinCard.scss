@@ -73,6 +73,7 @@
                     .form-btn {
                         position: relative;
                         width: 100%;
+                        transform: translateY(0%);
                     }
                 }
             }
@@ -84,13 +85,14 @@
         background-color: $BGC1;
 
         article {
-            gap: 30px;
             flex-direction: column;
+            gap: 30px;
 
             img {
                 width: 300px;
             }
 
+          
 
         }
     }

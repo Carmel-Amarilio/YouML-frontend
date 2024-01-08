@@ -23,15 +23,15 @@ window.userService = userService
 
 
 function getUsers() {
-    return storageService.query(USERS_KEY)
-    // return httpService.get(`user`)
+    // return storageService.query(USERS_KEY)
+    return httpService.get(`user`)
 }
 
 
 
 async function getUserById(userId) {
-    return await storageService.get(USERS_KEY, userId)
-    // return await httpService.get(`user/${userId}`)
+    // return await storageService.get(USERS_KEY, userId)
+    return await httpService.get(`user/${userId}`)
 }
 
 function remove(userId) {
@@ -100,12 +100,12 @@ function getLoggedinUser() {
 
 
 
-try {
-    const users = await getUsers()
-    if (!users.length) _addUsers()
-} catch (error) {
-    console.log(error);
-}
+// try {
+//     const users = await getUsers()
+//     if (!users.length) _addUsers()
+// } catch (error) {
+//     console.log(error);
+// }
 
 function _addUsers() {
     const users = [
@@ -122,6 +122,7 @@ function _addUsers() {
         _addUser('Dotgu', 1300, 'The internets friendliest designer kid.', 'https://res.cloudinary.com/du1jrse2t/image/upload/v1703750741/youML/be6772cb-fa1f-4d9c-a0f7-279829d98bad_wrkjdx.png', 'https://res.cloudinary.com/du1jrse2t/image/upload/v1704205213/youML/Image_PlaceHolder_1_ya9pr6.png'),
         _addUser('Ghiblier', 1300, 'The internets friendliest designer kid.', 'https://res.cloudinary.com/du1jrse2t/image/upload/v1703750745/youML/cadf4157-b8e5-4b92-ba62-502fd8ab6396_neha6a.png', 'https://res.cloudinary.com/du1jrse2t/image/upload/v1704205213/youML/Image_PlaceHolder_1_ya9pr6.png'),
     ]
+    users.forEach(user => save(user))
     save(users)
 }
 

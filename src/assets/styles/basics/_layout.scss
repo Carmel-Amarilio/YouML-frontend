@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: $mainMargin 1fr $mainMargin;
 
-    > * {
+    >* {
         grid-column: 2;
 
         &.full {
@@ -13,6 +13,10 @@
     @include for-normal-layout {
         grid-template-columns: $mainMarginNarrow 1fr $mainMarginNarrow;
     }
+
+    @include for-wide-layout {
+        grid-template-columns: 1fr 1050px 1fr;
+    }
 }
 
 .card-grid {
@@ -20,4 +24,3 @@
     grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
     grid-gap: 30px;
 }
-

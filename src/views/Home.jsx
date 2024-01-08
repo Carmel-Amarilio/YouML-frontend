@@ -18,7 +18,7 @@ import rocketIcon from "../assets/img/icons/RocketLaunch.svg"
 
 
 export function Home() {
-    const recipes = useSelector((storeState) => storeState.recipeModule.recipes) 
+    const recipes = useSelector((storeState) => storeState.recipeModule.recipes)
     const users = useSelector((storeState) => storeState.userModule.users)
 
     useEffect(() => {
@@ -29,7 +29,7 @@ export function Home() {
             })
     }, []);
 
-    if (!recipes.length || !users.length) return ('loading...')
+    if (recipes.length < 3 || !users.length) return ('loading...')
     return (
         <section className="home main-container">
             <MainHeader />
