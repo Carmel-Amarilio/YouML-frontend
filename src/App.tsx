@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Route, HashRouter as Router, Routes } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import './assets/styles/main.scss'
@@ -11,7 +10,7 @@ import { TopCreators } from './views/TopCreators'
 import { BrowseMarketplace } from './views/BrowseMarketplace'
 import { CreatorPage } from './views/CreatorPage'
 
-export function App() {
+export function App() : React.ReactElement {
   return (
     <Provider store={store}>
       <Router>

@@ -4,13 +4,20 @@ import { useNavigate } from "react-router-dom";
 
 import { utilService } from "../services/util.service";
 import { loadUsers } from "../store/actions/user.actions";
+import { User } from "../models/models";
 
 import { MainHeader } from "../cmps/MainHeader";
 import { MainFooter } from "../cmps/MainFooter";
 
+interface RootState {
+    userModule: {
+        users: User[];
+    };
+}
+
 export function TopCreators() {
     const navigate = useNavigate()
-    const users = useSelector((storeState) => storeState.userModule.users)
+    const users = useSelector((storeState: RootState) => storeState.userModule.users)
     const [filter, setFilter] = useState('today')
 
     useEffect(() => {

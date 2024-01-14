@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
 import { loadRecipes } from "../store/actions/recipe.actions";
+import { Recipe, User } from "../models/models";
 
 import { MainHeader } from "../cmps/MainHeader";
 import { DiscoverCreate } from "../cmps/home page/DiscoverCreate";
@@ -15,11 +16,18 @@ import { MainFooter } from "../cmps/MainFooter";
 import arrowIcon from "../assets/img/icons/ArrowRight.svg"
 import rocketIcon from "../assets/img/icons/RocketLaunch.svg"
 
+interface RootState {
+    recipeModule: {
+        recipes: Recipe[];
+    };
+    userModule: {
+        users: User[];
+    };
+}
 
-
-export function Home() {
-    const recipes = useSelector((storeState) => storeState.recipeModule.recipes)
-    const users = useSelector((storeState) => storeState.userModule.users)
+export function Home(): JSX.Element {
+    const recipes = useSelector((storeState: RootState) => storeState.recipeModule.recipes);
+    const users = useSelector((storeState: RootState) => storeState.userModule.users)
 
     useEffect(() => {
         loadUsers()
@@ -29,7 +37,7 @@ export function Home() {
             })
     }, []);
 
-    if (recipes.length < 3 || !users.length) return ('loading...')
+    if (recipes.length < 3 || !users.length) return <div>loading...</div>
     return (
         <section className="home main-container">
             <MainHeader />

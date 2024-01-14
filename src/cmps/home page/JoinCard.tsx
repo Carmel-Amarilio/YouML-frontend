@@ -1,7 +1,7 @@
 import astronautImg from '../../assets/img/astronaut.png'
 import envelopeIcon from '../../assets/img/icons/EnvelopeSimple.svg'
 
-export function JoinCard() {
+export function JoinCard() : JSX.Element {
 
     function onEmail(e) {
         const val = e.target.value

@@ -3,12 +3,19 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 import { loadRecipes } from "../store/actions/recipe.actions";
+import { Recipe } from "../models/models";
 
 import { MainFooter } from "../cmps/MainFooter";
 import { MainHeader } from "../cmps/MainHeader";
 
+interface RootState {
+    recipeModule: {
+        recipes: Recipe[];
+    };
+}
+
 export function BrowseMarketplace() {
-    const recipes = useSelector((storeState) => storeState.recipeModule.recipes)
+    const recipes = useSelector((storeState: RootState) => storeState.recipeModule.recipes);
     const [filter, setFilter] = useState({ name: '', sort: 'top' })
 
     useEffect(() => {
@@ -42,7 +49,7 @@ export function BrowseMarketplace() {
             </article>
 
             <article className="list main-container full">
-                <RecipesList title={'Trending Recipes'} recipes={recipes} />
+                <RecipesList recipes={recipes} />
             </article>
             
             <MainFooter />

@@ -5,6 +5,7 @@ import { useSelector } from "react-redux"
 import { userService } from "../services/user.service"
 import { utilService } from "../services/util.service"
 import { loadRecipes } from "../store/actions/recipe.actions"
+import { Recipe } from "../models/models"
 
 import { MainHeader } from "../cmps/MainHeader"
 import { MainFooter } from "../cmps/MainFooter"
@@ -18,9 +19,15 @@ import DiscordLogoWhitIcon from '../assets/img/icons/DiscordLogoWhit.svg'
 import GlobeIcon from '../assets/img/icons/Globe.svg'
 import { RecipesList } from "../cmps/home page/RecipesList"
 
+interface RootState {
+    recipeModule: {
+        recipes: Recipe[];
+    };
+}
+
 export function CreatorPage() {
     const params = useParams()
-    const recipes = useSelector((storeState) => storeState.recipeModule.recipes)
+    const recipes = useSelector((storeState: RootState) => storeState.recipeModule.recipes);
     const [user, setUser] = useState(null)
     const [filter, setFilter] = useState('created')
     console.log(recipes);
@@ -107,7 +114,7 @@ export function CreatorPage() {
                 <article className="list main-container full">
                     {recipes.length <= 0 ?
                         <div>There are no {name} recipes</div> :
-                        <RecipesList title={'Trending Recipes'} recipes={recipes} />}
+                        <RecipesList recipes={recipes} />}
                 </article>
 
             </main>

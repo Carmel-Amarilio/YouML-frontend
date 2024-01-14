@@ -1,10 +1,16 @@
 import { utilService } from "../../services/util.service";
 
+import { Recipe } from "../../models/models";
+
 import likeIcon from "../../assets/img/icons/Like.svg"
 import dotIcon from "../../assets/img/icons/Dot.svg"
 import HeartIcon from "../../assets/img/icons/Heart.svg"
 
-export function RecipesList({ recipes }) {
+interface props {
+    recipes: Recipe[];
+}
+
+export function RecipesList({ recipes } : props) : JSX.Element{
     return (
         <section className="recipes-list card-grid">
             {recipes.map(({ _id, imgUrl, name, by, likes, runs }, i) => (

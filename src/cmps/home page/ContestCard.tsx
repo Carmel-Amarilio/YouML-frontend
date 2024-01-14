@@ -1,6 +1,13 @@
+import { User } from "../../models/models";
+
 import eyeIcon from "../../assets/img/icons/Eye.svg"
 
-export function ContestCard({ user }) {
+interface props {
+    user: User;
+  }
+  
+
+export function ContestCard({ user } : props) : JSX.Element {
     return (
         <section className="contest-card full">
             <div className="user flex align-center gap10">

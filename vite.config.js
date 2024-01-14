@@ -7,5 +7,6 @@ export default defineConfig({
   build: {
     outDir: '../youML-backend/public',
     emptyOutDir: true
-    }
+    },
+    
 })

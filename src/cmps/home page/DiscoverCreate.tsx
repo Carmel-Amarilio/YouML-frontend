@@ -1,9 +1,16 @@
 import { utilService } from "../../services/util.service"
 
+import { Recipe } from "../../models/models";
+
 import rocketIcon from "../../assets/img/icons/RocketLaunch.svg"
 import plusIcon from "../../assets/img/icons/Plus.svg"
 
-export function DiscoverCreate({ recipes }) {
+
+interface props {
+    recipes: Recipe[];
+}
+
+export function DiscoverCreate({ recipes } : props): JSX.Element {
     const statistics = [{ title: "Total Runs", total: 240200 }, { title: "Workflows", total: 100500 }, { title: "Creators", total: 240600 }]
     const { name, imgUrl, by } = recipes[3];
 
@@ -13,8 +20,8 @@ export function DiscoverCreate({ recipes }) {
 
             <article className="view flex column gap30">
                 <div className="btns-container flex gap20">
-                    <button className="form-btn icon-box"> <img src={rocketIcon}/> Discover</button>
-                    <button className="underline-btn icon-box"><img src={plusIcon} /> Create</button> 
+                    <button className="form-btn icon-box"> <img src={rocketIcon} /> Discover</button>
+                    <button className="underline-btn icon-box"><img src={plusIcon} /> Create</button>
                 </div>
 
                 <div className="statistics-container flex ">

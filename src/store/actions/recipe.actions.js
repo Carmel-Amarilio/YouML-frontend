@@ -1,4 +1,4 @@
-import { recipeService } from "../../services/recipe.service.js";
+import { recipeService } from "../../services/recipe.service.ts";
 import { ADD_RECIPE, REMOVE_RECIPE, SET_RECIPES, UPDATE_RECIPE } from "../reducers/recipe.reducer.js";
 import { store } from "../store.js";
 

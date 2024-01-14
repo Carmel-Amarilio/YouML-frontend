@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { utilService } from "../../services/util.service";
 
 
-export function UsersList({ users }) {
+export function UsersList({ users }) : JSX.Element{
     const navigate = useNavigate()
 
     return (
