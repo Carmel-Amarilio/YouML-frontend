@@ -1,30 +1,21 @@
-import { useSelector } from "react-redux";
+import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { usersStore } from "../store/userStore";
 import { utilService } from "../services/util.service";
-import { loadUsers } from "../store/actions/user.actions";
 import { User } from "../models/models";
 
 import { MainHeader } from "../cmps/MainHeader";
 import { MainFooter } from "../cmps/MainFooter";
 
-interface RootState {
-    userModule: {
-        users: User[];
-    };
-}
-
-export function TopCreators() {
+export const TopCreators: React.FC = observer(() => {
     const navigate = useNavigate()
-    const users = useSelector((storeState: RootState) => storeState.userModule.users)
-    const [filter, setFilter] = useState('today')
+    const users: User[] = usersStore.users;
+    const [filter, setFilter] = useState<string>('today')
 
     useEffect(() => {
-        loadUsers()
-            .catch((err) => {
-                console.log('err', err)
-            })
+        usersStore.getUsers();
     }, []);
 
     return (
@@ -73,4 +64,4 @@ export function TopCreators() {
             <MainFooter />
         </section>
     )
-}
+})

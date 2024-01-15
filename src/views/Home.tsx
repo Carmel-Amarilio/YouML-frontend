@@ -1,14 +1,14 @@
-import { useSelector } from "react-redux";
+import { observer } from "mobx-react";
 import { useEffect } from "react";
 
-import { loadRecipes } from "../store/actions/recipe.actions";
+import { usersStore } from "../store/userStore";
+import { recipeStore } from "../store/recipeStore";
 import { Recipe, User } from "../models/models";
 
 import { MainHeader } from "../cmps/MainHeader";
 import { DiscoverCreate } from "../cmps/home page/DiscoverCreate";
 import { RecipesList } from "../cmps/home page/RecipesList";
 import { UsersList } from "../cmps/home page/UsersList";
-import { loadUsers } from "../store/actions/user.actions";
 import { ContestCard } from "../cmps/home page/ContestCard";
 import { JoinCard } from "../cmps/home page/JoinCard";
 import { MainFooter } from "../cmps/MainFooter";
@@ -16,25 +16,15 @@ import { MainFooter } from "../cmps/MainFooter";
 import arrowIcon from "../assets/img/icons/ArrowRight.svg"
 import rocketIcon from "../assets/img/icons/RocketLaunch.svg"
 
-interface RootState {
-    recipeModule: {
-        recipes: Recipe[];
-    };
-    userModule: {
-        users: User[];
-    };
-}
 
-export function Home(): JSX.Element {
-    const recipes = useSelector((storeState: RootState) => storeState.recipeModule.recipes);
-    const users = useSelector((storeState: RootState) => storeState.userModule.users)
+
+export const Home: React.FC = observer(() => {
+    const recipes: Recipe[] = recipeStore.recipes;
+    const users: User[] = usersStore.users;
 
     useEffect(() => {
-        loadUsers()
-        loadRecipes()
-            .catch((err) => {
-                console.log('err', err)
-            })
+        usersStore.getUsers();
+        recipeStore.getRecipes();
     }, []);
 
     if (recipes.length < 3 || !users.length) return <div>loading...</div>
@@ -66,4 +56,4 @@ export function Home(): JSX.Element {
             <MainFooter />
         </section>
     )
-}
+})

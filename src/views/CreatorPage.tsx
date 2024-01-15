@@ -1,58 +1,41 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useEffect, useState } from "react";
+import { observer } from "mobx-react";
+import { useParams } from "react-router-dom";
 
-import { userService } from "../services/user.service"
-import { utilService } from "../services/util.service"
-import { loadRecipes } from "../store/actions/recipe.actions"
-import { Recipe } from "../models/models"
+import { recipeStore } from "../store/recipeStore";
+import { usersStore } from "../store/userStore";
+import { utilService } from "../services/util.service";
+import { Recipe, User } from "../models/models";
 
-import { MainHeader } from "../cmps/MainHeader"
-import { MainFooter } from "../cmps/MainFooter"
+import { MainHeader } from "../cmps/MainHeader";
+import { MainFooter } from "../cmps/MainFooter";
+import { RecipesList } from "../cmps/home page/RecipesList";
 
-import plusIcon from "../assets/img/icons/Plus.svg"
-import InstagramLogoIcon from '../assets/img/icons/InstagramLogo.svg'
-import TwitterLogoIcon from '../assets/img/icons/TwitterLogo.svg'
-import YoutubeLogoIcon from '../assets/img/icons/YoutubeLogo.svg'
-import DiscordLogoIcon from '../assets/img/icons/DiscordLogo.svg'
-import DiscordLogoWhitIcon from '../assets/img/icons/DiscordLogoWhit.svg'
-import GlobeIcon from '../assets/img/icons/Globe.svg'
-import { RecipesList } from "../cmps/home page/RecipesList"
+import plusIcon from "../assets/img/icons/Plus.svg";
+import InstagramLogoIcon from '../assets/img/icons/InstagramLogo.svg';
+import TwitterLogoIcon from '../assets/img/icons/TwitterLogo.svg';
+import YoutubeLogoIcon from '../assets/img/icons/YoutubeLogo.svg';
+import DiscordLogoIcon from '../assets/img/icons/DiscordLogo.svg';
+import DiscordLogoWhitIcon from '../assets/img/icons/DiscordLogoWhit.svg';
+import GlobeIcon from '../assets/img/icons/Globe.svg';
 
-interface RootState {
-    recipeModule: {
-        recipes: Recipe[];
-    };
-}
+export const CreatorPage: React.FC = observer(() => {
+    const params = useParams();
+    const recipes: Recipe[] = recipeStore.recipes;
+    const user: User = usersStore.user;
+    const [filter, setFilter] = useState<string>('created');
 
-export function CreatorPage() {
-    const params = useParams()
-    const recipes = useSelector((storeState: RootState) => storeState.recipeModule.recipes);
-    const [user, setUser] = useState(null)
-    const [filter, setFilter] = useState('created')
     console.log(recipes);
 
-
     useEffect(() => {
-        const { creatorId } = params
-        getUser(creatorId)
-        loadRecipes({ byId: creatorId })
-            .catch((err) => {
-                console.log('err', err)
-            })
+        const { creatorId } = params;
+        usersStore.getUser(creatorId)
+        recipeStore.getRecipes({ byId: creatorId })
+    }, []);
 
-    }, [])
 
-    async function getUser(creatorId) {
-        try {
-            const user = await userService.getUserById(creatorId)
-            setUser(user)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    if (!user) return ('loading...')
-    const { _id, name, runs, bio, imgUrl, backImgUrl } = user
+    if (!user) return <div>Loading...</div>;
+    const { _id, name, runs, bio, imgUrl, backImgUrl } = user;
     return (
         <section className="creator-page">
             <MainHeader />
@@ -122,4 +105,4 @@ export function CreatorPage() {
             <MainFooter />
         </section>
     )
-}
+})

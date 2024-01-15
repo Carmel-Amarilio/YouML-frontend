@@ -1,36 +1,32 @@
 import { RecipesList } from "../cmps/home page/RecipesList";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { observer } from "mobx-react";
+import { ChangeEvent, useEffect, useState } from "react";
 
-import { loadRecipes } from "../store/actions/recipe.actions";
+import { recipeStore } from "../store/recipeStore";
 import { Recipe } from "../models/models";
 
 import { MainFooter } from "../cmps/MainFooter";
 import { MainHeader } from "../cmps/MainHeader";
 
-interface RootState {
-    recipeModule: {
-        recipes: Recipe[];
-    };
+interface Filter {
+    name: string;
+    sort: 'top' | 'collections';
 }
 
-export function BrowseMarketplace() {
-    const recipes = useSelector((storeState: RootState) => storeState.recipeModule.recipes);
-    const [filter, setFilter] = useState({ name: '', sort: 'top' })
+export const BrowseMarketplace: React.FC = observer(() => {
+    const recipes: Recipe[] = recipeStore.recipes;
+    const [filter, setFilter] = useState<Filter>({ name: '', sort: 'top' })
 
     useEffect(() => {
-        loadRecipes()
-            .catch((err) => {
-                console.log('err', err)
-            })
+        recipeStore.getRecipes();
     }, [])
 
-    function onSearch(e) {
+    function onSearch(e: ChangeEvent<HTMLInputElement>): void  {
         const val = e.target.value
         setFilters('name', val)
     }
 
-    function setFilters(key, val) {
+    function setFilters(key: keyof Filter, val: string): void {
         setFilter(prev => ({ ...prev, [key]: val }))
     }
 
@@ -51,9 +47,9 @@ export function BrowseMarketplace() {
             <article className="list main-container full">
                 <RecipesList recipes={recipes} />
             </article>
-            
+
             <MainFooter />
 
         </section>
     )
-}
+})
