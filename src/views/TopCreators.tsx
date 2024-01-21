@@ -18,9 +18,13 @@ export const TopCreators: React.FC = observer(() => {
         usersStore.getUsers();
     }, []);
 
+    function onNavigate(to: string) {
+        navigate(to)
+    }
+
     return (
         <section className="top-creators main-container">
-            <MainHeader />
+            <MainHeader onNavigate={onNavigate} />
             <main>
                 <h1>Top Creators</h1>
                 <header className="flex space-between">
@@ -61,7 +65,7 @@ export const TopCreators: React.FC = observer(() => {
                     </tbody>
                 </table>
             </main>
-            <MainFooter />
+            <MainFooter onNavigate={onNavigate}/>
         </section>
     )
 })

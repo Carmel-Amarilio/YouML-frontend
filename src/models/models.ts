@@ -14,7 +14,7 @@ export interface Recipe {
 }
 
 export interface User{
-    _id: string;
+    _id?: string;
     name: string;
     imgUrl: string;
     runs: number;

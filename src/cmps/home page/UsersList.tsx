@@ -1,15 +1,12 @@
-import { useNavigate } from "react-router-dom";
-
 import { utilService } from "../../services/util.service";
 
 
-export function UsersList({ users }) : JSX.Element{
-    const navigate = useNavigate()
+export function UsersList({ users, onNavigate }): JSX.Element {
 
     return (
         <section className="users-list card-grid">
             {users.map(({ _id, imgUrl, name, runs }, i) => (
-                <article key={i} className="user-card flex column" onClick={() => navigate(`/creator/${_id}`)}>
+                <article key={i} className="user-card flex column" onClick={() => onNavigate(`/creator/${_id}`)}>
                     < div className="index" > {i + 1}</div>
                     <img src={imgUrl} alt={name} />
                     <h4 className="name">{name}</h4>

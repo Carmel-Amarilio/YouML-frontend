@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { MainFooter } from "../cmps/MainFooter";
 import { MainHeader } from "../cmps/MainHeader";
 
@@ -7,9 +9,15 @@ import GoogleIcon from '../assets/img/icons/Google Logo.svg'
 import appleIcon from '../assets/img/icons/Apple Logo.svg'
 
 export function CreateAccount() {
+    const navigate = useNavigate()
+
+    function onNavigate(to: string) {
+        navigate(to)
+    }
+
     return (
         <section className="create-account">
-            <MainHeader />
+            <MainHeader onNavigate={onNavigate} />
             <main>
                 <img src={imgUrl} />
                 <section className="flex column gap30">
@@ -20,7 +28,7 @@ export function CreateAccount() {
                     <button className='form-btn apple icon-box'> <img src={appleIcon} /> Continue with Apple</button>
                 </section>
             </main>
-            <MainFooter />
+            <MainFooter onNavigate={onNavigate} />
         </section>
     )
 }

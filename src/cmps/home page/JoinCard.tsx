@@ -1,5 +1,6 @@
 import astronautImg from '../../assets/img/astronaut.png'
 import envelopeIcon from '../../assets/img/icons/EnvelopeSimple.svg'
+import '../../assets/styles/main.scss';
 
 export function JoinCard() : JSX.Element {
 

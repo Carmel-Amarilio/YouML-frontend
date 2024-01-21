@@ -7,12 +7,12 @@ import plusIcon from "../../assets/img/icons/Plus.svg"
 
 
 interface props {
-    recipes: Recipe[];
+    recipe: Recipe;
 }
 
-export function DiscoverCreate({ recipes } : props): JSX.Element {
+export function DiscoverCreate({ recipe } : props): JSX.Element {
     const statistics = [{ title: "Total Runs", total: 240200 }, { title: "Workflows", total: 100500 }, { title: "Creators", total: 240600 }]
-    const { name, imgUrl, by } = recipes[3];
+    const { name, imgUrl, by } = recipe;
 
     return (
         <section className="discover-create">

@@ -1,12 +1,10 @@
 
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import logoImgUrl from '../assets/img/youML-logo.png'
 import userIcon from '../assets/img/icons/User.svg'
 
-export function MainHeader() {
-    const navigate = useNavigate()
+export function MainHeader({onNavigate}) {
     const [isOpen, setIsOpen] = useState(false)
 
     function toggleNav() {
@@ -16,10 +14,10 @@ export function MainHeader() {
     const Nav = () => {
         return (
             <>
-                <button onClick={() => navigate("/marketplace")}>Marketplace</button>
-                <button onClick={() => navigate("/top-creators")}>Rankings</button>
+                <button onClick={() => onNavigate("/marketplace")}>Marketplace</button>
+                <button onClick={() => onNavigate("/top-creators")}>Rankings</button>
                 <button>Create</button>
-                <button onClick={() => navigate("/create-account")} className='form-btn icon-box'>
+                <button onClick={() => onNavigate("/create-account")} className='form-btn icon-box'>
                     <img src={userIcon} alt="User Icon" /> Sign Up
                 </button>
             </>
@@ -28,7 +26,7 @@ export function MainHeader() {
 
     return (
         <header className="main-header full flex space-between">
-            <article className='logo flex justify-center align-center gap5' onClick={() => navigate("/")}>
+            <article className='logo flex justify-center align-center gap5' onClick={() => onNavigate("/")}>
                 <img src={logoImgUrl} />
                 <h3>YouML</h3>
             </article>

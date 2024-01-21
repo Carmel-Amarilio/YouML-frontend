@@ -1,5 +1,3 @@
-import { useNavigate } from 'react-router-dom'
-
 import logoImgUrl from '../assets/img/youML-logo.png'
 import InstagramLogoIcon from '../assets/img/icons/InstagramLogo.svg'
 import TwitterLogoIcon from '../assets/img/icons/TwitterLogo.svg'
@@ -7,10 +5,9 @@ import YoutubeLogoIcon from '../assets/img/icons/YoutubeLogo.svg'
 import DiscordLogoIcon from '../assets/img/icons/DiscordLogo.svg'
 
 
-export function MainFooter() {
-    const navigate = useNavigate()
+export function MainFooter({onNavigate}) {
 
-    function onEmail(e) {
+    function onEmail(e ) {
         const val = e.target.value
     }
 
@@ -18,7 +15,7 @@ export function MainFooter() {
         <footer className="main-footer main-container full ">
             <section className='flex space-between'>
                 <article className='flex column'>
-                    <div className='logo flex align-center gap5' onClick={() => navigate("/")}>
+                    <div className='logo flex align-center gap5' onClick={() => onNavigate("/")}>
                         <img src={logoImgUrl} />
                         <h2>YouML</h2>
                     </div>

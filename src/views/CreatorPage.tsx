@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { observer } from "mobx-react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { recipeStore } from "../store/recipeStore";
 import { usersStore } from "../store/userStore";
@@ -20,6 +20,7 @@ import DiscordLogoWhitIcon from '../assets/img/icons/DiscordLogoWhit.svg';
 import GlobeIcon from '../assets/img/icons/Globe.svg';
 
 export const CreatorPage: React.FC = observer(() => {
+    const navigate = useNavigate()
     const params = useParams();
     const recipes: Recipe[] = recipeStore.recipes;
     const user: User = usersStore.user;
@@ -33,12 +34,16 @@ export const CreatorPage: React.FC = observer(() => {
         recipeStore.getRecipes({ byId: creatorId })
     }, []);
 
+    function onNavigate(to: string) {
+        navigate(to)
+    }
+
 
     if (!user) return <div>Loading...</div>;
     const { _id, name, runs, bio, imgUrl, backImgUrl } = user;
     return (
         <section className="creator-page">
-            <MainHeader />
+            <MainHeader onNavigate={onNavigate}/>
             <article className="imgs">
                 <img className="back" src={backImgUrl} />
                 <img className="face" src={imgUrl} />
@@ -102,7 +107,7 @@ export const CreatorPage: React.FC = observer(() => {
 
             </main>
 
-            <MainFooter />
+            <MainFooter onNavigate={onNavigate}/>
         </section>
     )
 })
