@@ -10,7 +10,7 @@ interface props {
     recipe: Recipe;
 }
 
-export function DiscoverCreate({ recipe } : props): JSX.Element {
+export function DiscoverCreate({ recipe }: props): JSX.Element {
     const statistics = [{ title: "Total Runs", total: 240200 }, { title: "Workflows", total: 100500 }, { title: "Creators", total: 240600 }]
     const { name, imgUrl, by } = recipe;
 
@@ -37,10 +37,10 @@ export function DiscoverCreate({ recipe } : props): JSX.Element {
             <article className="recipes-card flex column">
                 <img src={imgUrl} />
                 <div className="recipes-details flex column gap10">
-                    <h4>{name}</h4>
+                    <h4>{name.length > 25 ? `${name.substring(0, 25)}...` : name}</h4>
                     <div className="flex align-center gap5">
-                        <img src={by.imgUrl} className="mini-profile" />
-                        <p>{by.name}</p>
+                        {by.imgUrl ? <img src={by.imgUrl} alt={`${by.name}'s profile`} className="mini-profile" /> : <p className="mini-no-profile">{by.name.charAt(0).toUpperCase()}</p>}
+                        <p> {by.name.length > 15 ? `${by.name.substring(0, 15)}...` : by.name}</p>
                     </div>
                 </div>
             </article>

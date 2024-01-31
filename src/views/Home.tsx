@@ -36,7 +36,7 @@ export const Home: React.FC = observer(() => {
     if (recipes.length < 3 || !users.length) return <div>loading...</div>
     return (
         <section className="home main-container">
-            <MainHeader onNavigate={onNavigate} />
+            <MainHeader onNavigate={onNavigate}  />
             <DiscoverCreate recipe={recipes[3]} />
 
             <section className="list">

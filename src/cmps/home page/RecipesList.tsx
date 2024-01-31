@@ -10,18 +10,18 @@ interface props {
     recipes: Recipe[];
 }
 
-export function RecipesList({ recipes } : props) : JSX.Element{
+export function RecipesList({ recipes }: props): JSX.Element {
     return (
         <section className="recipes-list card-grid">
             {recipes.map(({ _id, imgUrl, name, by, likes, runs }, i) => (
                 <article key={i} className="recipes-card flex column">
                     <img src={imgUrl} alt={name} />
                     <div className="recipes-details flex column gap10">
-                        <h4>{name}</h4>
+                        <h4> {name.length > 20 ? `${name.substring(0, 20)}...` : name}</h4>
                         <div className="flex align-center gap5">
-                            <img src={by.imgUrl} alt={`${by.name}'s profile`} className="mini-profile" />
+                            {by.imgUrl ? <img src={by.imgUrl} alt={`${by.name}'s profile`} className="mini-profile" /> : <p className="mini-no-profile">{by.name.charAt(0).toUpperCase()}</p>}
                             <p className="name icon-box">
-                                {by.name}
+                                {by.name.length > 15 ? `${by.name.substring(0, 15)}...` : by.name}
                                 <img src={dotIcon} />
                                 <span className="num">{utilService.formatNumber(runs)} uses</span>
                                 <img src={dotIcon} />
